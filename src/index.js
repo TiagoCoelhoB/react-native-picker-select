@@ -205,8 +205,8 @@ export default class RNPickerSelect extends PureComponent {
 
         if (this.props.leftContentBtn === 'cancel') {
             leftContentBtn = (
-                <TouchableWithoutFeedback onPress={() => { this.togglePicker(true); }} hitSlop={{ top: 2, right: 2, bottom: 2, left: 2 }} >
-                    <View>
+                <TouchableWithoutFeedback onPress={() => { this.togglePicker(true); }}>
+                    <View style={ { marginLeft: 15 } }>
                         <Text style={[styles.cancel, this.props.style.cancel]}>
                             {this.props.cancelText}
                         </Text>
@@ -431,6 +431,7 @@ const styles = StyleSheet.create({
         height: 44,
         zIndex: 2,
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: '#EFF1F2',
         borderTopWidth: 0.5,
