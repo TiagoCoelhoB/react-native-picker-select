@@ -201,13 +201,22 @@ export default class RNPickerSelect extends PureComponent {
             return null;
         }
 
-        return (
-            <View style={[styles.modalViewMiddle, this.props.style.modalViewMiddle]}>
+        let leftContentBtn;
+
+        if (this.props.leftContentBtn === 'cancel') {
+            leftContentBtn = (
+                <TouchableWithoutFeedback onPress={() => { this.togglePicker(true); }} hitSlop={{ top: 2, right: 2, bottom: 2, left: 2 }} >
+                    <View>
+                        <Text style={[styles.cancel, this.props.style.cancel]}>
+                            {this.props.cancelText}
+                        </Text>
+                    </View>
+                </TouchableWithoutFeedback>
+            );
+        } else {
+            leftContentBtn = (
                 <View style={{ flex: 1, flexDirection: 'row', marginLeft: 15 }}>
-                    <TouchableOpacity
-                        activeOpacity={this.props.onUpArrow ? 0.5 : 1}
-                        onPress={this.props.onUpArrow ? this.onUpArrow : null}
-                    >
+                    <TouchableOpacity activeOpacity={this.props.onUpArrow ? 0.5 : 1} onPress={this.props.onUpArrow ? this.onUpArrow : null}>
                         <View
                             style={[
                                 styles.chevron,
@@ -221,10 +230,7 @@ export default class RNPickerSelect extends PureComponent {
                         />
                     </TouchableOpacity>
                     <View style={{ marginHorizontal: 10 }} />
-                    <TouchableOpacity
-                        activeOpacity={this.props.onDownArrow ? 0.5 : 1}
-                        onPress={this.props.onDownArrow ? this.onDownArrow : null}
-                    >
+                    <TouchableOpacity activeOpacity={this.props.onDownArrow ? 0.5 : 1} onPress={this.props.onDownArrow ? this.onDownArrow : null} >
                         <View
                             style={[
                                 styles.chevron,
@@ -238,6 +244,12 @@ export default class RNPickerSelect extends PureComponent {
                         />
                     </TouchableOpacity>
                 </View>
+            );
+        }
+
+        return (
+            <View style={[styles.modalViewMiddle, this.props.style.modalViewMiddle]}>
+                {leftContentBtn}
                 <TouchableWithoutFeedback
                     onPress={() => {
                         this.togglePicker(true);
