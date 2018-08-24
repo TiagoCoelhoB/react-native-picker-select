@@ -1,6 +1,4 @@
 # react-native-picker-select
-[![4.2.1]]
-
 A Picker component for React Native which emulates the native `<select>` interfaces for iOS and Android
 
 For iOS, we are wrapping a TextInput component. You can pass down your custom styling to match your other inputs.
