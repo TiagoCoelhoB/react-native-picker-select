@@ -64,6 +64,7 @@ export default class RNPickerSelect extends PureComponent {
         onUpArrow: PropTypes.func,
         onDownArrow: PropTypes.func,
         doneText: PropTypes.string,
+        androidTextInputProperties: PropTypes.object,
     };
 
     static defaultProps = {
@@ -83,6 +84,7 @@ export default class RNPickerSelect extends PureComponent {
         onUpArrow: null,
         onDownArrow: null,
         doneText: 'Done',
+        androidTextInputProperties: {},
     };
 
     static getDerivedStateFromProps(nextProps, prevState) {
